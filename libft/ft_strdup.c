@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alfrberm <alfrberm@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/13 18:11:09 by alfrberm          #+#    #+#             */
-/*   Updated: 2024/09/19 18:52:52 by alfrberm         ###   ########.fr       */
+/*   Created: 2024/09/19 19:03:57 by alfrberm          #+#    #+#             */
+/*   Updated: 2024/09/19 19:05:26 by alfrberm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
+char	*ft_strdup(char *src)
 {
-	unsigned int	i;
+	char	*string;
+	int		i;
+	int		j;
 
 	i = 0;
-	while (s1[i] != 0 && s2[i] != 0 && i < n)
-	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
+	j = 0;
+	while (src[i] != 0)
 		i++;
+	string = (char *)malloc((i + 1) * sizeof(char));
+	if (string == NULL)
+		return (NULL);
+	while (src[j] != 0)
+	{
+		string[j] = src[j];
+		j++;
 	}
-	if (i < n)
-		return (s1[i] - s2[i]);
-	return (0);
+	string[j] = 0;
+	return (string);
 }
