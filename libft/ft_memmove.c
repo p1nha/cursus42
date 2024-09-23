@@ -1,26 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alfrberm <alfrberm@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/19 21:16:55 by alfrberm          #+#    #+#             */
-/*   Updated: 2024/09/23 13:25:23 by alfrberm         ###   ########.fr       */
+/*   Created: 2024/09/23 13:03:15 by alfrberm          #+#    #+#             */
+/*   Updated: 2024/09/23 16:54:40 by alfrberm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memset(void *str, int c, size_t n)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	size_t			i;
-	unsigned char	*str_ptr;
+	unsigned char	*src_ptr;
+	unsigned char	*dest_ptr;
 
-	str_ptr = (unsigned char *)str;
+	src_ptr = (unsigned char *)src;
+	dest_ptr = (unsigned char *)dest;
 	i = 0;
-	while (i < n)
+	if (dest_ptr > src_ptr)
 	{
-		str_ptr[i] = (unsigned char)c;
-		i++;
+		while (n > 0)
+		{
+			n--;
+			dest_ptr[n] = src_ptr[n];
+		}
 	}
-	return (str);
+	else
+	{
+		while (i < n)
+		{
+			dest_ptr[i] = src_ptr[i];
+			i++;
+		}
+	}
+	return (dest);
 }
