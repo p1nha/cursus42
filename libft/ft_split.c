@@ -6,62 +6,93 @@
 /*   By: alfrberm <alfrberm@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 19:26:32 by alfrberm          #+#    #+#             */
-/*   Updated: 2024/09/26 14:32:33 by alfrberm         ###   ########.fr       */
+/*   Updated: 2024/09/27 09:32:14 by alfrberm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 size_t	get_word_num(char const *str, char c)
 {
 	size_t	i;
 	size_t	word_num;
 
-	while (str[i != 0])
+	i = 0;
+	word_num = 0;
+	while (str[i] != '\0')
 	{
 		if (str[i] == c)
 			i++;
 		else
 		{
 			word_num++;
-			while (str[i] != 0 && str[i] != c)
+			while (str[i] != '\0' && str[i] != c)
 				i++;
 		}
 	}
-	return (word_cnt);
+	return (word_num);
 }
 
 char	**free_all(char **str, size_t i)
 {
-	while (i >= 0)
+	while (i > 0)
 	{
-		free(str[i]);
+		free(str[i - 1]);
 		i--;
 	}
 	free(str);
 	return (NULL);
 }
 
-char	**ft_split(char const *str, char c)
+static char	**allocate_words(const char *str, char c)
+{
+	char	**words;
+
+	words = (char **)malloc(sizeof(char *) * (get_word_num(str, c) + 1));
+	if (!words)
+		return (NULL);
+	return (words);
+}
+
+static int	fill_words(char **words, const char *str, char c)
 {
 	size_t	i;
 	size_t	len;
-	char	**words;
+	size_t	word_index;
 
-	words = (char **)malloc(get_word_num(str, c) * sizeof(char *))
-	if (words == NULL)
-		return (NULL);
 	i = 0;
-	while (str[i] != 0)
+	word_index = 0;
+	while (str[i])
 	{
 		if (str[i] == c)
 			i++;
 		else
 		{
 			len = 0;
-			while (str[i + len] != 0 && str[i + len] != c)
+			while (str[i + len] && str[i + len] != c)
 				len++;
-			word[i] = ft_substr(s, 0, len);
-			if (!word[i])
-				return (free_all(words, i));
+			words[word_index] = ft_substr(str, i, len);
+			if (!words[word_index])
+				return (free_all(words, word_index), 0);
+			word_index++;
+			i += len;
 		}
 	}
+	words[word_index] = NULL;
+	return (1);
 }
+
+char	**ft_split(char const *str, char c)
+{
+	char	**words;
+
+	if (!str)
+		return (NULL);
+	words = allocate_words(str, c);
+	if (!words)
+		return (NULL);
+	if (!fill_words(words, str, c))
+		return (NULL);
+	return (words);
+}
+
