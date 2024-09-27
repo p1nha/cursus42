@@ -6,9 +6,11 @@
 /*   By: alfrberm <alfrberm@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 17:27:58 by alfrberm          #+#    #+#             */
-/*   Updated: 2024/09/25 19:25:32 by alfrberm         ###   ########.fr       */
+/*   Updated: 2024/09/27 16:36:54 by alfrberm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 size_t	to_trim(const char *set, char c)
 {
@@ -30,7 +32,7 @@ char	*get_result(char const *s1, size_t start, size_t len)
 	size_t	i;
 
 	if (len <= 0 || start >= ft_strlen(s1))
-		return(ft_strdup(""));
+		return (ft_strdup(""));
 	result = (char *)malloc((len + 1) * sizeof(char));
 	if (result != 0)
 		return (NULL);
@@ -54,7 +56,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	while (to_trim(set, s1[i]) != 0)
 		i++;
 	j = ft_strlen(s1) - 1;
-	while(to_trim(set, s1[i]) != 0)
+	while (to_trim(set, s1[i]) != 0)
 		j--;
 	return (get_result(s1, i, j - (i - 1)));
 }

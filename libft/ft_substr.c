@@ -6,7 +6,7 @@
 /*   By: alfrberm <alfrberm@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 17:59:03 by alfrberm          #+#    #+#             */
-/*   Updated: 2024/09/27 09:32:12 by alfrberm         ###   ########.fr       */
+/*   Updated: 2024/09/27 16:36:20 by alfrberm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_substr(char const *str, unsigned int start, size_t len)
 		return (0);
 	if (str_len < start)
 		len = 0;
-	else if(len > str_len - start)
+	else if (len > str_len - start)
 		len = str_len - start;
 	result = (char *)malloc((len + 1) * sizeof(char));
 	if (result == NULL)

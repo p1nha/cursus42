@@ -6,9 +6,11 @@
 /*   By: alfrberm <alfrberm@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 12:58:48 by alfrberm          #+#    #+#             */
-/*   Updated: 2024/09/27 13:04:07 by alfrberm         ###   ########.fr       */
+/*   Updated: 2024/09/27 16:14:33 by alfrberm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	ft_putchar_fd(char c, int fd)
 {

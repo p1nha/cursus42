@@ -6,9 +6,11 @@
 /*   By: alfrberm <alfrberm@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 17:19:31 by alfrberm          #+#    #+#             */
-/*   Updated: 2024/09/24 17:34:43 by alfrberm         ###   ########.fr       */
+/*   Updated: 2024/09/27 16:13:28 by alfrberm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	*ft_calloc(size_t nmeb, size_t size)
 {

@@ -6,9 +6,11 @@
 /*   By: alfrberm <alfrberm@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 15:57:47 by alfrberm          #+#    #+#             */
-/*   Updated: 2024/09/24 17:43:39 by alfrberm         ###   ########.fr       */
+/*   Updated: 2024/09/27 16:14:58 by alfrberm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {

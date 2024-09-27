@@ -6,7 +6,7 @@
 /*   By: alfrberm <alfrberm@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 19:26:32 by alfrberm          #+#    #+#             */
-/*   Updated: 2024/09/27 09:32:14 by alfrberm         ###   ########.fr       */
+/*   Updated: 2024/09/27 16:35:44 by alfrberm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,4 +95,3 @@ char	**ft_split(char const *str, char c)
 		return (NULL);
 	return (words);
 }
-
