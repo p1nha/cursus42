@@ -6,7 +6,7 @@
 /*   By: alfrberm <alfrberm@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 14:10:48 by alfrberm          #+#    #+#             */
-/*   Updated: 2024/09/27 16:14:41 by alfrberm         ###   ########.fr       */
+/*   Updated: 2024/09/28 15:15:43 by alfrberm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ void	ft_putnbr_fd(int nb, int fd)
 	}
 	if (nb < 0)
 	{
-		write(1, "-", 1);
+		write(fd, "-", 1);
 		nb = nb * -1;
 	}
 	if (nb > 9)
-		ft_putnbr(nb / 10);
+		ft_putnbr_fd(nb / 10, fd);
 	nb_char = nb % 10 + '0';
 	write(fd, &nb_char, 1);
 }

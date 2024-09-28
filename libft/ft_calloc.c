@@ -6,7 +6,7 @@
 /*   By: alfrberm <alfrberm@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 17:19:31 by alfrberm          #+#    #+#             */
-/*   Updated: 2024/09/27 16:13:28 by alfrberm         ###   ########.fr       */
+/*   Updated: 2024/09/28 17:44:29 by alfrberm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ void	*ft_calloc(size_t nmeb, size_t size)
 {
 	void	*buffer;
 
-	buffer = (void)malloc(size * nmeb);
+	if (nmeb != 0 && size > SIZE_MAX / nmeb)
+		return (NULL);
+	buffer = (void *)malloc(size * nmeb);
 	if (buffer == NULL)
 		return (NULL);
 	ft_bzero(buffer, size * nmeb);

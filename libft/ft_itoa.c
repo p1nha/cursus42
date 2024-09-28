@@ -6,13 +6,13 @@
 /*   By: alfrberm <alfrberm@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 07:53:15 by alfrberm          #+#    #+#             */
-/*   Updated: 2024/09/27 16:14:06 by alfrberm         ###   ########.fr       */
+/*   Updated: 2024/09/28 11:53:06 by alfrberm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	num_len(long num)
+static int	num_len(long num)
 {
 	int	len;
 

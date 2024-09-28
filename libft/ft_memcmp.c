@@ -6,7 +6,7 @@
 /*   By: alfrberm <alfrberm@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:41:51 by alfrberm          #+#    #+#             */
-/*   Updated: 2024/09/27 16:14:14 by alfrberm         ###   ########.fr       */
+/*   Updated: 2024/09/28 12:57:11 by alfrberm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	s2_ptr = (unsigned char *)s2;
 	while (i < n)
 	{
-		if (s1_ptr[i] != s1_ptr[i])
+		if (s1_ptr[i] != s2_ptr[i])
 			return (s1_ptr[i] - s2_ptr[i]);
 		i++;
 	}
