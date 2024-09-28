@@ -6,13 +6,13 @@
 /*   By: alfrberm <alfrberm@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 19:26:32 by alfrberm          #+#    #+#             */
-/*   Updated: 2024/09/27 16:35:44 by alfrberm         ###   ########.fr       */
+/*   Updated: 2024/09/28 18:08:16 by alfrberm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	get_word_num(char const *str, char c)
+static size_t	get_word_num(char const *str, char c)
 {
 	size_t	i;
 	size_t	word_num;
@@ -33,7 +33,7 @@ size_t	get_word_num(char const *str, char c)
 	return (word_num);
 }
 
-char	**free_all(char **str, size_t i)
+static char	**free_all(char **str, size_t i)
 {
 	while (i > 0)
 	{
