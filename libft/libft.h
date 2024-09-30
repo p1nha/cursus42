@@ -6,7 +6,7 @@
 /*   By: alfrberm <alfrberm@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 15:05:34 by alfrberm          #+#    #+#             */
-/*   Updated: 2024/09/28 18:40:42 by alfrberm         ###   ########.fr       */
+/*   Updated: 2024/09/29 11:30:07 by alfrberm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,11 @@ char			*ft_strtrim(char const *s1, char const *set);
 char			*ft_substr(char const *str, unsigned int start, size_t len);
 int				ft_tolower(int c);
 int				ft_toupper(int c);
+
+typedef struct s_list
+{
+	void 			*content;
+	struct s_list 	*next;
+} 				t_list;
 
 #endif
