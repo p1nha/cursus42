@@ -6,9 +6,11 @@
 /*   By: alfrberm <alfrberm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 12:10:01 by alfrberm          #+#    #+#             */
-/*   Updated: 2024/10/06 20:01:38 by alfrberm         ###   ########.fr       */
+/*   Updated: 2024/10/07 16:13:13 by alfrberm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "ft_printf.h"
 
 int	ft_putchar(int c)
 {
@@ -20,8 +22,10 @@ int	ft_putstr(const char *str)
 {
 	int	i;
 
+	if (!str)
+		return (ft_putstr("(null)"));
 	i = 0;
-	while(str[i] != 0)
+	while (str[i] != 0)
 		ft_putchar(str[i++]);
 	return (i);
 }
@@ -29,7 +33,7 @@ int	ft_putstr(const char *str)
 int	ft_putnbr(int nb)
 {
 	char	nb_char;
-	int	size;
+	int		size;
 
 	size = 0;
 	if (nb == -2147483648)
@@ -45,19 +49,20 @@ int	ft_putnbr(int nb)
 	if (nb > 9)
 		ft_putnbr(nb / 10);
 	nb_char = nb % 10 + '0';
-	size += putchar(nb_char);
+	size += ft_putchar(nb_char);
 	return (size);
 }
 
 int	ft_putnbr_unsigned(unsigned int nb)
 {
 	char	nb_char;
-	int	size;
+	int		size;
 
+	size = 0;
 	if (nb > 9)
 		ft_putnbr_unsigned(nb / 10);
 	nb_char = nb % 10 + '0';
-	size += putchar(nb_char);
+	size += ft_putchar(nb_char);
 	return (size);
 }
 
@@ -73,9 +78,9 @@ int	ft_putnbr_base(int nb, const char *base)
 	while (base[i] != 0)
 		i++;
 	base_len = i;
-	if (nbr < 0)
+	if (nb < 0)
 	{
-		size = putchar('-');
+		size = ft_putchar('-');
 		nb = -nb;
 	}
 	if (nb > base_len - 1)

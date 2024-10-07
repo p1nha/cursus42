@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putptr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alfrberm <alfrberm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 15:11:15 by alfrberm          #+#    #+#             */
-/*   Updated: 2024/10/07 16:34:54 by alfrberm         ###   ########.fr       */
+/*   Created: 2024/10/07 15:27:59 by alfrberm          #+#    #+#             */
+/*   Updated: 2024/10/07 16:35:42 by alfrberm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include <unistd.h>
+int	ft_putptr(void *ptr)
+{
+	int		size;
+	char	*hex;
 
-int	ft_printf(const char *str, ...);
-int	ft_putchar(int c);
-int	ft_putstr(const char *str);
-int	ft_putnbr(int nb);
-int	ft_putnbr_unsigned(unsigned int nb);
-int	ft_putnbr_base(int nb, const char *base);
-int	ft_putptr(void *ptr);
-
-#endif
+	hex = "0123456789abcdef";
+	size = ft_putstr("0x");
+	if (ptr == 0)
+		return (size + ft_putchar('0'));
+	if (ptr > 15)
+		size += ft_putptr(ptr / 16);
+	size += ft_putchar(hex[ptr % 16]);
+	return (size);
+}

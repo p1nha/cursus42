@@ -6,21 +6,23 @@
 /*   By: alfrberm <alfrberm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 18:41:05 by alfrberm          #+#    #+#             */
-/*   Updated: 2024/10/06 20:01:33 by alfrberm         ###   ########.fr       */
+/*   Updated: 2024/10/07 16:34:43 by alfrberm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "ft_printf.h"
 
 int	write_var(va_list args, const char type)
 {
 	int	size;
-	
+
 	size = 0;
 	if (type == 'c')
 		size += ft_putchar(va_arg(args, int));
 	else if (type == 's')
 		size += ft_putstr(va_arg(args, char *));
 	else if (type == 'p')
-		size += ft_putnbr_base(va_arg(args, int), "0123456789abcdef");
+		size += ft_putptr(va_arg(args, void *));
 	else if (type == 'd')
 		size += ft_putnbr(va_arg(args, int));
 	else if (type == 'i')
@@ -33,15 +35,14 @@ int	write_var(va_list args, const char type)
 		size += ft_putnbr_base(va_arg(args, int), "0123456789ABCDEF");
 	else if (type == '%')
 		size += ft_putchar('%');
-
 	return (size);
 }
 
 int	ft_printf(char const *str, ...)
 {
-	va_list args;
-	int	i;
-	int	size;
+	va_list	args;
+	int		i;
+	int		size;
 
 	va_start(args, str);
 	i = 0;
