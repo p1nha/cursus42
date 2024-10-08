@@ -6,7 +6,7 @@
 /*   By: alfrberm <alfrberm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 12:10:01 by alfrberm          #+#    #+#             */
-/*   Updated: 2024/10/07 16:13:13 by alfrberm         ###   ########.fr       */
+/*   Updated: 2024/10/08 08:22:36 by alfrberm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	ft_putnbr(int nb)
 		nb = nb * -1;
 	}
 	if (nb > 9)
-		ft_putnbr(nb / 10);
+		size += ft_putnbr(nb / 10);
 	nb_char = nb % 10 + '0';
 	size += ft_putchar(nb_char);
 	return (size);
@@ -60,32 +60,19 @@ int	ft_putnbr_unsigned(unsigned int nb)
 
 	size = 0;
 	if (nb > 9)
-		ft_putnbr_unsigned(nb / 10);
+		size += ft_putnbr_unsigned(nb / 10);
 	nb_char = nb % 10 + '0';
 	size += ft_putchar(nb_char);
 	return (size);
 }
 
-int	ft_putnbr_base(int nb, const char *base)
+int	ft_putnbr_base(unsigned long nb, const char *base)
 {
-	int	nb_char;
-	int	base_len;
 	int	size;
-	int	i;
 
-	i = 0;
 	size = 0;
-	while (base[i] != 0)
-		i++;
-	base_len = i;
-	if (nb < 0)
-	{
-		size = ft_putchar('-');
-		nb = -nb;
-	}
-	if (nb > base_len - 1)
-		ft_putnbr_base(nb / base_len, base);
-	nb_char = base[nb % base_len];
-	size += ft_putchar(nb_char);
+	if (nb > 15)
+		size += ft_putnbr_base(nb / 16, base);
+	size += ft_putchar(base[nb % 16]);
 	return (size);
 }

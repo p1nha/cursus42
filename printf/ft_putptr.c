@@ -6,7 +6,7 @@
 /*   By: alfrberm <alfrberm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:27:59 by alfrberm          #+#    #+#             */
-/*   Updated: 2024/10/07 16:35:42 by alfrberm         ###   ########.fr       */
+/*   Updated: 2024/10/08 08:22:31 by alfrberm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,13 @@
 
 int	ft_putptr(void *ptr)
 {
-	int		size;
-	char	*hex;
+	int				size;
+	unsigned long	address;
 
-	hex = "0123456789abcdef";
 	size = ft_putstr("0x");
-	if (ptr == 0)
+	if (!ptr)
 		return (size + ft_putchar('0'));
-	if (ptr > 15)
-		size += ft_putptr(ptr / 16);
-	size += ft_putchar(hex[ptr % 16]);
+	address = (unsigned long)ptr;
+	size += ft_putnbr_base(address, "0123456789abcdef");
 	return (size);
 }

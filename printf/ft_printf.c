@@ -6,7 +6,7 @@
 /*   By: alfrberm <alfrberm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 18:41:05 by alfrberm          #+#    #+#             */
-/*   Updated: 2024/10/07 16:34:43 by alfrberm         ###   ########.fr       */
+/*   Updated: 2024/10/08 08:22:37 by alfrberm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ int	write_var(va_list args, const char type)
 	else if (type == 'i')
 		size += ft_putnbr(va_arg(args, int));
 	else if (type == 'u')
-		size += ft_putnbr_unsigned(va_arg(args, int));
+		size += ft_putnbr_unsigned(va_arg(args, unsigned int));
 	else if (type == 'x')
-		size += ft_putnbr_base(va_arg(args, int), "0123456789abcdef");
+		size += ft_putnbr_base(va_arg(args, unsigned int), "0123456789abcdef");
 	else if (type == 'X')
-		size += ft_putnbr_base(va_arg(args, int), "0123456789ABCDEF");
+		size += ft_putnbr_base(va_arg(args, unsigned int), "0123456789ABCDEF");
 	else if (type == '%')
 		size += ft_putchar('%');
 	return (size);
