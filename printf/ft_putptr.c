@@ -17,9 +17,9 @@ int	ft_putptr(void *ptr)
 	int				size;
 	unsigned long	address;
 
-	size = ft_putstr("0x");
 	if (!ptr)
-		return (size + ft_putchar('0'));
+		return (ft_putstr("(nil)"));
+	size = ft_putstr("0x");
 	address = (unsigned long)ptr;
 	size += ft_putnbr_base(address, "0123456789abcdef");
 	return (size);
