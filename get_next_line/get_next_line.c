@@ -6,12 +6,34 @@
 /*   By: alfrberm <alfrberm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 08:25:07 by alfrberm          #+#    #+#             */
-/*   Updated: 2024/10/14 16:10:40 by alfrberm         ###   ########.fr       */
+/*   Updated: 2024/10/21 18:41:01 by alfrberm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
+
+#define BUFFER_SIZE = 1
+
+unsigned int	ft_strlcpy(char *dest, const char *src, unsigned int size)
+{
+	unsigned int	i;
+	unsigned int	length;
+
+	i = 0;
+	length = 0;
+	while (src[length] != 0)
+		length++;
+	if (size == 0)
+		return (length);
+	while (src[i] != 0 && i < size -1)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = 0;
+	return (length);
+}
 
 char	*ft_strchr(const char *str, int c)
 {
@@ -104,6 +126,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (result);
 }
 
+//////////////////////////////////////////////////////////////////////
+
 char	*fill_line(int fd, char *buffer)
 {
 	char	*tmp;
@@ -112,7 +136,7 @@ char	*fill_line(int fd, char *buffer)
 	while(!ft_strchr(tmp, '\n') || !ft_strchr(tmp, '0'))
 	{
 		read(fd, buffer, BUFFER_SIZE);
-		temp = ft_strjoin(tmp, buffer);
+		tmp = ft_strjoin(tmp, buffer);
 	}
 	return (tmp);
 }
@@ -125,16 +149,39 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
+	if (leftovers != NULL)
+	{
+		line = ft_strdup(leftovers);
+		free(leftovers);
+	}
+	else
+		line = ft_strdup("");
 	line = fill_line(fd, buffer);
-	leftovers = ft_substr(line, ft_strchr(line, '\n'), ft_strlen(line) - ft_strchr(line, '\n'));
+	if (!line)
+		return (NULL);
+	leftovers = get_leftovers(line);
 	return (line);
 }
 
 int	main(void)
 {
-	int	fd;
+	int		fd;
+	int		i;
+	char	*line;
 
 	fd = open("example.txt", O_RDONLY);
-	printf("%s", get_next_line(fd));
+	if (fd == -1)
+	{
+		printf("Error opening file")
+		return (1);
+	}
+	i = 0;
+	while ((line = get_next_line(fd)) != NULL)
+	{
+		printf("[%d] %s", i, line);
+		free(line);
+		i++;
+	}
 	close (fd);
+	return (0);
 }
