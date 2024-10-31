@@ -6,7 +6,7 @@
 /*   By: alfrberm <alfrberm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 08:25:07 by alfrberm          #+#    #+#             */
-/*   Updated: 2024/10/21 18:41:01 by alfrberm         ###   ########.fr       */
+/*   Updated: 2024/10/27 16:21:52 by alfrberm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ char	*get_next_line(int fd)
 	char		*line;
 	static char	*leftovers;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
 	if (leftovers != NULL)
 	{
@@ -172,8 +172,7 @@ int	main(void)
 	fd = open("example.txt", O_RDONLY);
 	if (fd == -1)
 	{
-		printf("Error opening file")
-		return (1);
+		printf("Error opening file");
 	}
 	i = 0;
 	while ((line = get_next_line(fd)) != NULL)
