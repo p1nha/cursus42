@@ -22,18 +22,10 @@ static char	*clear_temp(char *temp)
 	while (temp[i] && temp[i] != '\n')
 		i++;
 	if (!temp[i])
-	{
-		free(temp);
-		temp = NULL;
-		return (NULL);
-	}
+		return (free(temp), temp = NULL, NULL);
 	new_temp = (char *)malloc((ft_strlen(temp) - i + 1) * sizeof(char));
 	if (!new_temp)
-	{
-		free(temp);
-		temp = NULL;
-		return (NULL);
-	}
+		return (free(temp), temp = NULL, NULL);
 	i++;
 	j = 0;
 	while (temp[i])
@@ -100,7 +92,7 @@ char	*get_next_line(int fd)
 	if (!temp)
 	{
 		temp = ft_strdup("");
-		if(!temp)
+		if (!temp)
 			return (NULL);
 	}
 	temp = fill_temp(fd, temp);
@@ -108,11 +100,7 @@ char	*get_next_line(int fd)
 		return (free(temp), temp = NULL, NULL);
 	line = get_line(temp);
 	if (line == NULL)
-	{
-		free(temp);
-		temp = NULL;
-		return (NULL);
-	}
+		return (free(temp), temp = NULL, NULL);
 	temp = clear_temp(temp);
 	return (line);
 }

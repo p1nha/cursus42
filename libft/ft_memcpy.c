@@ -4,7 +4,6 @@
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alfrberm <alfrberm@student.42madrid.com    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:44:50 by alfrberm          #+#    #+#             */
 /*   Updated: 2024/09/28 16:30:47 by alfrberm         ###   ########.fr       */
 /*                                                                            */
